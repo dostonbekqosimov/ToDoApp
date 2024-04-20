@@ -1,3 +1,4 @@
+// ! You could give better name for this file , like Task.entity.java
 package doston.uz.ToDoApp;
 
 import jakarta.persistence.*;
