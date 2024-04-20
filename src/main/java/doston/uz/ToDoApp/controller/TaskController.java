@@ -17,31 +17,31 @@ class TaskController{
         this.taskService = taskService;
     }
 
-    @GetMapping("/hello")
+    @GetMapping("/hello") // redendant handler
     public String sayHello(){
         return "Hello World";
     }
 
     // getting all tasks
-    @GetMapping("")
+    @GetMapping("")  // add route , line /all 
     public List<Task> getAllTasks(){
        return taskService.getAllTasks();
     }
 
     // adding new task
-    @PostMapping("")
+    @PostMapping("") // /add
     public String addNewTask(@RequestBody Task task){
         return taskService.addNewTask(task);
     }
 
     // getting one task by id
-    @GetMapping("/{taskId}")
+    @GetMapping("/{taskId}") // specify route , like /single/{taskId}
     public Task getTask(@PathVariable("taskId")Integer taskId){
         return taskService.getTask(taskId);
     }
 
     // updating one task by id
-    @PutMapping("/{taskId}")
+    @PutMapping("/{taskId}") // specify route
     public String updateTask(
             @PathVariable("taskId")Integer taskId,
             @RequestBody Task task){
@@ -50,7 +50,7 @@ class TaskController{
     }
 
     // deleting one task by id
-    @DeleteMapping("/{taskId}")
+    @DeleteMapping("/{taskId}") // specify route
     public String deleteStudent(@PathVariable("taskId") Integer taskId){
         return taskService.deleteTask(taskId);
 
