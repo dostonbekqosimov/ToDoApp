@@ -19,7 +19,7 @@ public class TaskService {
         return taskRepository.findAll();
     }
 
-    public String addNewTask(Task task) {
+    public String addNewTask(Task task) { // return new task id instead
         taskRepository.save(task);
         return "New task added!";
     }
@@ -37,7 +37,7 @@ public class TaskService {
 
         Optional<Task> task1 = taskRepository.findById(taskId);
         if (task1.isEmpty()) {
-            System.out.println("Task with this id not found");
+            System.out.println("Task with this id not found"); // throw meaningfull error instead
         }
 
         Task existingTask = task1.get();
@@ -50,15 +50,15 @@ public class TaskService {
         existingTask.setStatus(task.getStatus());
 
         taskRepository.save(existingTask);
-        return "Task with updated! ";
+        return "Task with updated! "; // return updated task id with updated data
     }
 
     public String deleteTask(Integer taskId) {
         boolean exists = taskRepository.existsById(taskId);
         if (!exists) {
-            throw new IllegalStateException("student with id-" + taskId + " doesn't exist");
+            throw new IllegalStateException("student with id-" + taskId + " doesn't exist"); // BadRequestException should be returned
         }
         taskRepository.deleteById(taskId);
-        return "Task deleted!";
+        return "Task deleted!"; // return userId
     }
 }
