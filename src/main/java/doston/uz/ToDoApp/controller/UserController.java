@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api/users") // api versioning should be api/v1/*
 public class UserController {
     private UserService userService;
 
@@ -23,7 +23,7 @@ public class UserController {
 
     // get One user
     @GetMapping("/{userId}")
-    public User getUser(@PathVariable("userId") Integer userId) {
+    public User getUser(@PathVariable("userId") Integer userId) {  // give meaningful name for method
         return userService.getUser(userId);
 
     }
