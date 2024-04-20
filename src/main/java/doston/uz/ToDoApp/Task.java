@@ -34,7 +34,7 @@ public class Task {
                 this.createdAt = LocalDateTime.now();
         }
 
-        public Task(int userId, String name, LocalDate startDate, LocalDate endDate, int priority, String status) {
+        public Task(int userId, String name, LocalDate startDate, LocalDate endDate, int priority, String status) { // you could use interface instead of these args
                 this.userId = userId;
                 this.name = name;
                 this.startDate = startDate;
