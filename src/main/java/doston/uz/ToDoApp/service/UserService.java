@@ -25,14 +25,14 @@ public class UserService {
 
     public String addNewUser(User user) {
         userRepository.save(user);
-        return "New user joined!";
+        return "New user joined!"; // redandent line , return userRepository.save(user)
 
     }
 
     public User getUser(Integer userId) {
         Optional<User> user = userRepository.findById(userId);
         if (user.isEmpty()) {
-            System.out.println("User with this id not found");
+            System.out.println("User with this id not found"); // throw exception....
         }
         return user.get();
     }
@@ -40,7 +40,7 @@ public class UserService {
     public String updateUser(Integer userId, User user) {
         Optional<User> userOptional = userRepository.findById(userId);
         if (userOptional.isEmpty()) {
-            System.out.println("User with this id not found");
+            System.out.println("User with this id not found");/// throw exception
         }
 
         User existingUser = userOptional.get();
@@ -49,7 +49,7 @@ public class UserService {
         existingUser.setEmail(user.getEmail());
 
         userRepository.save(existingUser);
-        return "User updated successfully";
+        return "User updated successfully"; // redundant line
 
 
     }
@@ -59,6 +59,7 @@ public class UserService {
         if (!exists) {
             throw new IllegalStateException("student with id-" + userId + " doesn't exist");
         }
-        userRepository.deleteById(userId);
+        userRepository.deleteById(userId); 
+        // return something meaningfull
     }
 }
